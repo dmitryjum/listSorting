@@ -23,7 +23,7 @@ class Sorter
   def sort
     # storing indicies of number strings to map them back later
     num_indicies = @array.map {|i| @array.index(i) if (i =~ /\d/) == 0}.compact
-    # if there are numbers
+    # if there are no numbers
     if num_indicies.empty?
       @array.sort!
       #if there are only numbers
