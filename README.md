@@ -1,8 +1,8 @@
 ### listSorting
-The application takes arguments with file names to read and write and sorts strings of text in alphabetical and numerical order removing non-numbers and non-letter symbols from words while keeping numbers in the same spots but in ascennding order.
+The application that is written in both Ruby and Python takes arguments with file names to read and write and sorts strings of text in alphabetical and numerical order removing non-numbers and non-letter symbols from words while keeping numbers in the same spots but in ascennding order.
 
 To start the programm run:
-> ruby listSorting.rb inputFile.txt outputFile.txt
+> ruby/python listSorting.rb inputFile.txt outputFile.txt
 
 Your input file may contain text like:
 > bu% asd 6 n$um 5
