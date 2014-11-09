@@ -8,6 +8,7 @@ class Sorter
     @file_read
     @array
     @num_indicies
+    @to_i_proc = lambda {|n| n.to_i}
   end
 
   def read
@@ -30,7 +31,8 @@ class Sorter
     # separating numbers and words for proper sort
     separation = @array.partition {|c| num_regex(c)}
     # sorting first array. Converting to integer in order to sort numbers bigger than 10
-    separation[0] = separation[0].map {|n| n.to_i}.sort
+    # '&' before @to_i_proc converts proc back to block in order to make it work
+    separation[0] = separation[0].map(&@to_i_proc).sort
     # sorting array of words and letters
     separation[1].sort!
     # inserting numbers in their original spots
@@ -51,7 +53,7 @@ class Sorter
       @array.sort!
       #if there are only numbers
     elsif @num_indicies.length == @array.length
-      @array = @array.map {|n| n.to_i}.sort
+      @array = @array.map(&@to_i_proc).sort
     else
       sort_nums_words_only
     end
