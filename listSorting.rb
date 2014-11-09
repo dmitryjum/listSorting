@@ -19,10 +19,15 @@ class Sorter
     # converting string to array removing non-numbers and non-letters
     @array = @file_read.split(" ").map {|s| s.gsub /\W/, ""}
   end
+  
+    # regex helper
+  def num_regex(i)
+    (i =~ /\d/) == 0
+  end
 
   def sort
     # storing indicies of number strings to map them back later
-    num_indicies = @array.map {|i| @array.index(i) if (i =~ /\d/) == 0}.compact
+    num_indicies = @array.map {|i| @array.index(i) if num_regex(i)}.compact
     # if there are no numbers
     if num_indicies.empty?
       @array.sort!
@@ -31,7 +36,7 @@ class Sorter
       @array = @array.map {|n| n.to_i}.sort
     else
       # separating numbers and words for proper sort
-      separation = @array.partition {|c| (c =~ /\d/) == 0}
+      separation = @array.partition {|c| num_regex(c)}
       # sorting first array. Converting to integer in order to sort numbers bigger than 10
       separation[0] = separation[0].map {|n| n.to_i}.sort
       # sorting array of words and letters
